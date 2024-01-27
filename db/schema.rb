@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_27_021158) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_27_052121) do
   create_table "admin_users", charset: "utf8", collation: "utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -30,6 +30,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_27_021158) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "admin_user_id", null: false
+    t.index ["admin_user_id"], name: "index_users_on_admin_user_id"
   end
 
+  add_foreign_key "users", "admin_users"
 end
