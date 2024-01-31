@@ -79,3 +79,4 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem 'pry-rails'
+gem 'bootstrap'
