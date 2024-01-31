@@ -8,6 +8,7 @@ class AdminUsersController < ApplicationController
 
   # GET /admin_users/1 or /admin_users/1.json
   def show
+    @admin_user = AdminUser.find(params[:id])
   end
 
   # GET /admin_users/new
@@ -17,6 +18,7 @@ class AdminUsersController < ApplicationController
 
   # GET /admin_users/1/edit
   def edit
+    @admin_user = AdminUser.find(params[:id])
   end
 
   # POST /admin_users or /admin_users.json
@@ -65,6 +67,6 @@ class AdminUsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_user_params
-      params.require(:admin_user).permit(:name, :email, :plan_id)
+      params.require(:admin_user).permit(:name, :email, :plan_id, :password, :password_confirmation)
     end
 end
