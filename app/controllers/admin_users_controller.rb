@@ -8,6 +8,7 @@ class AdminUsersController < ApplicationController
 
   # GET /admin_users/1 or /admin_users/1.json
   def show
+
     @admin_user = AdminUser.find(params[:id])
   end
 

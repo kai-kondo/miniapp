@@ -1,5 +1,6 @@
 class AdminUser < ApplicationRecord
-  belongs_to :plan, optional: true
+  has_many :users, dependent: :destroy
+  belongs_to :plan
   has_secure_password
 
   validates :name, presence: true
