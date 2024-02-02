@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     @users = User.all
+    @current_admin_user = current_admin_user
   end
 
   # GET /users/1 or /users/1.json
@@ -22,6 +23,12 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+
+    # 現在のログイン中の管理者ユーザーを取得
+    @admin_user = current_admin_user
+
+    # 新しいユーザーに管理者ユーザーを紐づける
+    @user.admin_user = @admin_user if @admin_user
 
     respond_to do |format|
       if @user.save
@@ -67,4 +74,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :admin_user_id)
     end
+
+    def current_admin_user
+      #ログイン中の管理者ユーザーを取得するためのメソッド
+      @current_admin_user ||= AdminUser.find_by(id: session[:admin_user_id]) if session[:admin_user_id]
+    end
+
 end
