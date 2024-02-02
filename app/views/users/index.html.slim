@@ -2,10 +2,14 @@ p style="color: green" = notice
 
 h1 Users
 
+- if @current_admin_user
+  p ログインしている管理者ユーザーID
+  = @current_admin_user.id
+
 #users
   - @users.each do |user|
     == render user
     p
-      = link_to "Show this user", user
+      = link_to "詳細を見る", user
 
-= link_to "New user", new_user_path
+= link_to "新規作成", new_user_path

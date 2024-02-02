@@ -3,8 +3,8 @@ p style="color: green" = notice
 == render @user
 
 div
-  => link_to "Edit this user", edit_user_path(@user)
+  => link_to "編集する", edit_user_path(@user)
   '|
-  =< link_to "Back to users", users_path
+  =< link_to "一覧画面に戻る", users_path
 
-  = button_to "Destroy this user", @user, method: :delete
+  = button_to "削除する", @user, method: :delete
